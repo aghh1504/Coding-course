@@ -10,8 +10,8 @@ class App extends Component {
     this.state = {
       show: false,
       courses: [],
-      students: '',
-      coaches: '',
+      students: [],
+      coaches: [],
       info: '',
       title: ''
     }
@@ -54,6 +54,16 @@ class App extends Component {
       .catch(err => console.log(err));
   }
 
+  onDelete = (id) => {
+    console.log('id on delete', id);
+    axios
+      .delete(`/course/${id}`)
+      .then(response => {
+        const courses = this.state.courses.filter(course => course._id !== id)
+        this.setState({courses: courses})
+  })
+}
+
   renderAddModal = () => {
     return (
       <ModalGen
@@ -71,10 +81,10 @@ class App extends Component {
   }
 
   render() {
-    console.log('courses', this.state.courses);
+    console.log('courses state', this.state.courses);
     return (
       <div className="App">
-          {this.state.courses.map(course => <CourseItem course={course}/>)}
+          {this.state.courses.map(course => <CourseItem course={course} onDelete={this.onDelete}/>)}
         <button className='btn btn-primary' onClick={this.onClick}>Add Course</button>
 
         {

@@ -56,6 +56,15 @@ app.post('/course', function(req, res) {
   })
 })
 
+app.delete('/course/:courseId', function(req, res) {
+  Course.remove({_id: req.params.courseId}, function(err, course) {
+    if(err)
+      res.send(err)
+    res.json({message: "Course successfully delete!"})
+  })
+})
+
+
 app.listen(8080, function() {
   console.log("Example app listening on port 8080!");
 });

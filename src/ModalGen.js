@@ -21,13 +21,13 @@ export default class  ModalGen extends Component  {
         </Modal.Header>
         <form onSubmit={this.onSubmit} id={this.props.id}>
             <Modal.Body>
-                <h2>Name of Course</h2>
-                <input value={this.props.title} name="title" onChange={this.props.onChange}/>
-                <h2>Info</h2>
+                <h4>Name of Course</h4>
+                <input value={this.props.title} name="title" onChange={this.props.onChange} className="form-control"/>
+                <h4>Info</h4>
                 <textarea value={this.props.info} name="info" onChange={this.onChange} placeholder="Add short info" className="form-control"/>
-                <h2>Students Names</h2>
+                <h4>Students Names</h4>
                 <input value={this.props.students} name="students" onChange={this.onChange} placeholder="Add students names seperated by commas" className="form-control"/>
-                <h2>Coaches Names</h2>
+                <h4>Coaches Names</h4>
                 <input value={this.props.coaches} name="coaches" onChange={this.onChange} placeholder="Add coaches names seperated by commas" className="form-control"/>
             </Modal.Body>
             <Modal.Footer>

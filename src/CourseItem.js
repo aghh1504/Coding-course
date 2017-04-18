@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import ModalShow from './ModalShow'
+import ModalShow from './ModalShow';
+import axios from 'axios';
 
 class CourseItem extends Component {
   constructor(props) {
@@ -13,13 +14,17 @@ class CourseItem extends Component {
     this.setState({show: !this.state.show})
   }
 
+
   renderInfoModal = () => {
+    const students = this.props.students ? this.props.course.students.split(",") : []
+    const coaches = this.props.coaches ? this.props.course.coaches.split(",") : []
     return (
       <ModalShow
+        onDelete={() => this.props.onDelete(this.props.course._id)}
         onClick={this.onClick}
         header='Course descrition'
-        students={this.props.course.students.split(",")}
-        coaches={this.props.course.coaches}
+        students={students}
+        coaches={coaches}
         info={this.props.course.info}
         footer1='edit'
         footer2='delete'

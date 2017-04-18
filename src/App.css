@@ -1,6 +1,6 @@
-.App {
+/*.App {
   text-align: center;
-}
+}*/
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -40,4 +40,11 @@
 }
 .modal-show-coaches {
   display: inline-block;
+}
+.row {
+  display: flex;
+}
+ul {
+  list-style: none;
+  padding: 0;
 }
