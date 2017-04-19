@@ -23,8 +23,8 @@ db.once("open", function() {
 var Course = mongoose.model("Course", {
   title: String,
   info: String,
-  students: String,
-  coaches: String,
+  students: Array,
+  coaches: Array,
   id: Number
 });
 
@@ -57,10 +57,10 @@ app.post('/course', function(req, res) {
 })
 
 app.delete('/course/:courseId', function(req, res) {
-  Course.remove({_id: req.params.courseId}, function(err, course) {
+  Course.remove({_id: req.params.courseId}, function(err) {
     if(err)
       res.send(err)
-    res.json({message: "Course successfully delete!"})
+    res.json({message: "Course successfully deleted!"})
   })
 })
 

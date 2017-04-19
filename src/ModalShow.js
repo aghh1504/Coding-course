@@ -9,9 +9,14 @@ export default class  ModalShow extends Component  {
   onDelete = (e) => {
     this.props.onDelete(e)
   }
+  onEdit = (e) => {
+     this.props.onEdit(e)
+  }
+
+
 
   render() {
-    console.log('props in modalShow',this.props.students.map(student => <li>{student}</li>))
+    console.log('modalshow', this.props.students);
   return (
     <Modal.Dialog >
         <Modal.Header>
@@ -26,8 +31,8 @@ export default class  ModalShow extends Component  {
                         <h4>Students</h4>
                         <ul>
                         {
-                          this.props.students.map(student => {
-                            return <li>{student}</li>
+                          this.props.students.map((student, i) => {
+                            return <li key={i}>{student}</li>
                           })
                         }
                        </ul>
@@ -38,8 +43,8 @@ export default class  ModalShow extends Component  {
                         <h4>Coaches</h4>
                         <ul>
                         {
-                          this.props.coaches.map(coach => {
-                            return <li>{coach}</li>
+                          this.props.coaches.map((coach, i) => {
+                            return <li key={i}>{coach}</li>
                           })
                         }
                        </ul>
@@ -49,11 +54,12 @@ export default class  ModalShow extends Component  {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button bsStyle="primary" onClick={this.onClick}>{this.props.footer1}</Button>
+                <Button bsStyle="primary" onClick={this.onEdit}>{this.props.footer1}</Button>
                 <Button bsStyle="danger" onClick={this.onDelete}>{this.props.footer2}</Button>
                 <Button onClick={this.onClick} name='close'>Close</Button>
             </Modal.Footer>
     </Modal.Dialog>
+
   )
   }
 };
